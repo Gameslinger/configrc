@@ -1,20 +1,24 @@
-# If not running interactively, don't do anything
-[[ "$-" != *i* ]] && return
+# .bashrc
+#Install vundle if it doesn't exist
+if [ ! -d $HOME/.vim/bundle/Vundle.vim ]; then
+    git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+    vim +PluginInstall +qall
+fi
+# Source global definitions
+if [ -f /etc/bashrc ]; then
+	. /etc/bashrc
+fi
 
-alias python=python.exe
+# User specific environment
+if ! [[ "$PATH" =~ "$HOME/.local/bin:$HOME/bin:" ]]
+then
+    PATH="$HOME/.local/bin:$HOME/bin:$PATH"
+fi
+export PATH
 
-alias egrep='egrep --color'
-alias fgrep='fgrep --color'
-alias grep='grep --color'
-alias l.='ls -d .* --color'
-alias ll='ls -l --color'
-alias ls='ls --color'
-alias vi='vim'
-alias xzegrep='xzegrep --color'
-alias xzfgrep='xzfgrep --color'
-alias xzgrep='xzgrep --color'
-alias zegrep='zegrep --color'
-alias zfgrep='zfgrep --color'
-alias zgrep='zgrep --color'
+# Uncomment the following line if you don't like systemctl's auto-paging feature:
+# export SYSTEMD_PAGER=
 
+# User specific aliases and functions
+alias vi=vim
 export PS1="\[\033[38;5;10m\]\u\[$(tput sgr0)\]:\[$(tput sgr0)\]\[\033[38;5;11m\]\h\[$(tput sgr0)\][\[$(tput sgr0)\]\[\033[38;5;196m\]\w\[$(tput sgr0)\]]>\[$(tput sgr0)\]"

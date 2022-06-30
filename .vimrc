@@ -1,4 +1,3 @@
-"Note try reinstalling YouCompleteMe for C/C++ support
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
@@ -29,7 +28,7 @@ syntax on
 
 filetype plugin indent on
 
-set tabstop=4
+set tabstop=4       
 set shiftwidth=4
 set softtabstop=4
 set expandtab
@@ -40,7 +39,8 @@ let g:ycm_global_ycm_extra_conf='~/.vim/bundle/YouCompleteMe/.ycm_extra_conf.py'
 let g:ycm_confirm_extra_conf=0
 let g:ycm_python_binary_path='/usr/bin/python3'
 
-
+"Disable showing docs on hover since that fuctionality is bound to <leader>\
+let g:ycm_auto_hover=''
 
 if (empty($TMUX))
     if (has("nvim"))
@@ -57,7 +57,7 @@ endif
 
 "For some reason not setting a built in theme first won't load gruvbox correctly
 colorscheme desert
-colorscheme gruvbox
+silent! colorscheme gruvbox
 
 set backspace=indent,eol,start
 "Autoenable NERDTree:
