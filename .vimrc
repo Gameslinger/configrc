@@ -10,13 +10,15 @@ Plugin 'vim-scripts/TeTrIs.vim'
 Plugin 'morhetz/gruvbox'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'preservim/nerdtree'
-"Plugin 'neomake/neomake'
+"Plugin 'neomake/neomake' "Code linter
+Plugin 'yegappan/taglist' "Show progam tokens
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'dense-analysis/ale'
+"Plugin 'tmhedberg/SimpylFold' "Slow python folding plugin
 call vundle#end()            " required
 filetype plugin indent on    " required
-"
+
 " Brief help
 " :PluginList       - lists configured plugins
 " :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
@@ -24,23 +26,28 @@ filetype plugin indent on    " required
 " :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
 "
 
+"General Options
 syntax on
+set number
 
+"Set folds to syntax. Doesn't work for python
+"set foldmethod=syntax
+
+"Options for tabs/ indenting
 filetype plugin indent on
-
-set tabstop=4       
+set tabstop=4
 set shiftwidth=4
 set softtabstop=4
 set expandtab
 
-set number
 " YouCompleteMe
 let g:ycm_global_ycm_extra_conf='~/.vim/bundle/YouCompleteMe/.ycm_extra_conf.py'
 let g:ycm_confirm_extra_conf=0
-let g:ycm_python_binary_path='/usr/bin/python3'
+"let g:ycm_python_binary_path='/usr/bin/python3'
 
 "Disable showing docs on hover since that fuctionality is bound to <leader>\
 let g:ycm_auto_hover=''
+map <leader>\ <plug>(YCMHover)
 
 if (empty($TMUX))
     if (has("nvim"))
@@ -57,14 +64,25 @@ endif
 
 "For some reason not setting a built in theme first won't load gruvbox correctly
 colorscheme desert
-silent! colorscheme gruvbox
+colorscheme gruvbox
 
+"Allows backspace to work in edit mode
 set backspace=indent,eol,start
-"Autoenable NERDTree:
-"au VimEnter *  NERDTree
-"Enable neomake. Ale currently installed
+
+"Enable neomake. Ale currently installed instead
 "call neomake#configure#automake('w')
 
 let g:airline#extensions#tabline#enabled = 1
-map <leader>\ <plug>(YCMHover)
+
 let NERDTreeShowHidden=1
+
+"Add intent indecators for YAML files
+autocmd Filetype yaml setlocal tabstop=2 ai colorcolumn=1,3,5,7,9,80
+autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
+
+"Closes Tlist if it is last window
+let Tlist_Exit_OnlyWindow = 1
+let Tlist_Show_One_File = 1
+let Tlist_Auto_Open = 1
+let Tlist_Inc_Winwidth = 0
+let Tlist_Compact_Format = 1
