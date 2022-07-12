@@ -11,7 +11,10 @@ Plugin 'morhetz/gruvbox'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'preservim/nerdtree'
 "Plugin 'neomake/neomake' "Code linter
-Plugin 'yegappan/taglist' "Show progam tokens
+"Plugin 'yegappan/taglist' "Show progam tokens
+Plugin 'majutsushi/tagbar' "Better version of taglist
+Plugin 'sheerun/vim-polyglot'
+Plugin 'tommcdo/vim-lion'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'dense-analysis/ale'
@@ -80,9 +83,19 @@ let NERDTreeShowHidden=1
 autocmd Filetype yaml setlocal tabstop=2 ai colorcolumn=1,3,5,7,9,80
 autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
 
+"ENABLE IF USING TAGLIST
 "Closes Tlist if it is last window
-let Tlist_Exit_OnlyWindow = 1
-let Tlist_Show_One_File = 1
-let Tlist_Auto_Open = 1
-let Tlist_Inc_Winwidth = 0
-let Tlist_Compact_Format = 1
+"let Tlist_Exit_OnlyWindow = 1
+"let Tlist_Show_One_File = 1
+"let Tlist_Auto_Open = 1
+"let Tlist_Inc_Winwidth = 0
+"let Tlist_Compact_Format = 1
+
+"Tagbar Config
+autocmd VimEnter * nested :call tagbar#autoopen(1)
+let g:tagbar_position='topleft vertical'
+let g:tagbar_width=30
+let g:tagbar_compact=1
+let g:tagbar_show_linenumbers=1
+let g:tagbar_show_tag_linenumbers=1
+let g:tagbar_foldlevel=0
