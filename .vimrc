@@ -31,6 +31,7 @@ filetype plugin indent on    " required
 
 "General Options
 syntax on
+set relativenumber
 set number
 
 "Set folds to syntax. Doesn't work for python
@@ -42,6 +43,13 @@ set tabstop=4
 set shiftwidth=4
 set softtabstop=4
 set expandtab
+
+"Other vim sets
+set hidden "Allow background buffers
+set incsearch "Search highlighting updates as you type
+set scrolloff=5 "Scroll up/ down when cursor is 8 lines away
+set nohlsearch "No highlighting after search
+
 
 " YouCompleteMe
 let g:ycm_global_ycm_extra_conf='~/.vim/bundle/YouCompleteMe/.ycm_extra_conf.py'
