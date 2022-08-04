@@ -91,10 +91,10 @@ autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
 
 "Tagbar Config
 "autocmd VimEnter * nested :call tagbar#autoopen(1)
+map <leader>] :TagbarToggle <CR>
 let g:tagbar_position='topleft vertical'
 let g:tagbar_width=30
 let g:tagbar_compact=1
 let g:tagbar_show_linenumbers=1
 let g:tagbar_show_tag_linenumbers=1
-"Tagbar folds are all closed
-"let g:tagbar_foldlevel=0
+let g:tagbar_foldlevel=99
