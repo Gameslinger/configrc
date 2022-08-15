@@ -17,6 +17,7 @@ call vundle#begin()
     Plugin 'vim-airline/vim-airline'
     Plugin 'vim-airline/vim-airline-themes'
     Plugin 'dense-analysis/ale'
+    Plugin 'tpope/vim-surround'
     "Plugin 'tmhedberg/SimpylFold' "Slow python folding plugin
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -68,8 +69,9 @@ if (empty($TMUX))
     endif
 endif
 
-"For some reason not setting a built in theme first won't load gruvbox correctly
-"colorscheme desert
+"Helps when enabling spelling
+let g:gruvbox_guisp_fallback = "bg"
+au BufRead *.txt set spell spelllang=en_us
 colorscheme gruvbox
 
 
@@ -98,3 +100,5 @@ let g:tagbar_compact=1
 let g:tagbar_show_linenumbers=1
 let g:tagbar_show_tag_linenumbers=1
 let g:tagbar_foldlevel=99
+let g:tagbar_autoclose=1
+let g:tagbar_autofocus = 1
