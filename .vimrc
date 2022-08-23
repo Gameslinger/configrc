@@ -18,6 +18,8 @@ call vundle#begin()
     Plugin 'vim-airline/vim-airline-themes'
     Plugin 'dense-analysis/ale'
     Plugin 'tpope/vim-surround'
+    "Plugin 'tpope/vim-fugitive'
+    Plugin 'vim-gitgutter'
     "Plugin 'tmhedberg/SimpylFold' "Slow python folding plugin
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -59,7 +61,12 @@ let g:ycm_confirm_extra_conf=0
 "Disable showing docs on hover since that fuctionality is bound to <leader>\
 let g:ycm_auto_hover=''
 map <leader>\ <plug>(YCMHover)
+nnoremap <leader>' :YcmCompleter GoTo<CR>
+nnoremap <leader>" :YcmCompleter GoToReferences<CR>
 
+nnoremap <leader>o :bn<CR>
+nnoremap <leader>i :bN<CR>
+nnoremap <leader>p :bd<CR>
 if (empty($TMUX))
     "For Neovim > 0.1.5 and Vim > patch 7.4.1799 < https://github.com/vim/vim/commit/61be73bb0f965a895bfb064ea3e55476ac175162 >
     "Based on Vim patch 7.4.1770 (`guicolors` option) < https://github.com/vim/vim/commit/8a633e3427b47286869aa4b96f2bfc1fe65b25cd >
@@ -70,7 +77,7 @@ if (empty($TMUX))
 endif
 
 "Helps when enabling spelling
-let g:gruvbox_guisp_fallback = "bg"
+"let g:gruvbox_guisp_fallback = "bg"
 au BufRead *.txt set spell spelllang=en_us
 colorscheme gruvbox
 
@@ -79,9 +86,11 @@ let g:airline#extensions#tabline#enabled = 1
 
 let NERDTreeShowHidden=1
 
-"Add intent indecators for YAML files
+"Add intent indicators for YAML files
 autocmd Filetype yaml setlocal tabstop=2 ai colorcolumn=1,3,5,7,9,80
 autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
+"Set 80 character indicator
+setlocal colorcolumn=80
 
 "ENABLE IF USING TAGLIST
 "Closes Tlist if it is last window
@@ -94,11 +103,12 @@ autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
 "Tagbar Config
 "autocmd VimEnter * nested :call tagbar#autoopen(1)
 map <leader>] :TagbarToggle <CR>
+map <leader>[ :NERDTreeToggle <CR>
 let g:tagbar_position='topleft vertical'
 let g:tagbar_width=30
 let g:tagbar_compact=1
 let g:tagbar_show_linenumbers=1
 let g:tagbar_show_tag_linenumbers=1
-let g:tagbar_foldlevel=99
+let g:tagbar_foldlevel=0
 let g:tagbar_autoclose=1
 let g:tagbar_autofocus = 1
