@@ -19,8 +19,7 @@ call vundle#begin()
     Plugin 'dense-analysis/ale'
     Plugin 'tpope/vim-surround'
     "Plugin 'tpope/vim-fugitive'
-    Plugin 'vim-gitgutter'
-    "Plugin 'tmhedberg/SimpylFold' "Slow python folding plugin
+    "Plugin 'vim-gitgutter'
 call vundle#end()            " required
 filetype plugin indent on    " required
 
@@ -57,29 +56,31 @@ set backspace=indent,eol,start
 " YouCompleteMe
 let g:ycm_global_ycm_extra_conf='~/.vim/bundle/YouCompleteMe/.ycm_extra_conf.py'
 let g:ycm_confirm_extra_conf=0
-"let g:ycm_python_binary_path='/usr/bin/python3'
 "Disable showing docs on hover since that fuctionality is bound to <leader>\
 let g:ycm_auto_hover=''
 map <leader>\ <plug>(YCMHover)
 nnoremap <leader>' :YcmCompleter GoTo<CR>
 nnoremap <leader>" :YcmCompleter GoToReferences<CR>
 
+let g:ycm_semantic_triggers = {
+	\   'python': [ 're!\w{2}' ],
+	\   'c': [ 're!\w{2}' ]
+	\ }
+let g:ycm_autoclose_preview_window_after_completion = 1
+
 nnoremap <leader>o :bn<CR>
 nnoremap <leader>i :bN<CR>
 nnoremap <leader>p :bd<CR>
+
 if (empty($TMUX))
-    "For Neovim > 0.1.5 and Vim > patch 7.4.1799 < https://github.com/vim/vim/commit/61be73bb0f965a895bfb064ea3e55476ac175162 >
-    "Based on Vim patch 7.4.1770 (`guicolors` option) < https://github.com/vim/vim/commit/8a633e3427b47286869aa4b96f2bfc1fe65b25cd >
-    " < https://github.com/neovim/neovim/wiki/Following-HEAD#20160511 >
     if (has("termguicolors"))
         set termguicolors
     endif
 endif
 
-"Helps when enabling spelling
-"let g:gruvbox_guisp_fallback = "bg"
-au BufRead *.txt set spell spelllang=en_us
 colorscheme gruvbox
+"Add highlighting for bad spelling:
+au BufRead,BufNewFile *.txt hi SpellBad ctermfg=red cterm=underline | setlocal spell spelllang=en_us
 
 
 let g:airline#extensions#tabline#enabled = 1
