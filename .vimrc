@@ -18,6 +18,10 @@ call vundle#begin()
     Plugin 'vim-airline/vim-airline-themes'
     Plugin 'dense-analysis/ale'
     Plugin 'tpope/vim-surround'
+    Plugin 'johngrib/vim-game-snake'
+    Plugin 'iamcco/markdown-preview.nvim'
+    Plugin 'dpelle/vim-LanguageTool'
+    "Plugin 'Ron89/thesaurus_query.vim'
     "Plugin 'tpope/vim-fugitive'
     "Plugin 'vim-gitgutter'
 call vundle#end()            " required
@@ -61,6 +65,7 @@ let g:ycm_auto_hover=''
 map <leader>\ <plug>(YCMHover)
 nnoremap <leader>' :YcmCompleter GoTo<CR>
 nnoremap <leader>" :YcmCompleter GoToReferences<CR>
+nnoremap <leader>r :YcmCompleter RefactorRename 
 
 let g:ycm_semantic_triggers = {
 	\   'python': [ 're!\w{2}' ],
@@ -80,8 +85,7 @@ endif
 
 colorscheme gruvbox
 "Add highlighting for bad spelling:
-au BufRead,BufNewFile *.txt hi SpellBad ctermfg=red cterm=underline | setlocal spell spelllang=en_us
-
+au BufRead,BufNewFile *.txt,*.md hi SpellBad ctermfg=red cterm=underline | setlocal spell spelllang=en_us | set dictionary+=/usr/share/dict/words
 
 let g:airline#extensions#tabline#enabled = 1
 
@@ -113,3 +117,25 @@ let g:tagbar_show_tag_linenumbers=1
 let g:tagbar_foldlevel=0
 let g:tagbar_autoclose=1
 let g:tagbar_autofocus = 1
+
+
+
+"MarkdownPreview Config
+let g:mkdp_auto_start = 0
+let g:mkdp_auto_close = 0
+"Link to css file to change styling
+let g:mkdp_markdown_css = ''
+let g:mkdp_preview_options = {
+    \ 'mkit': {},
+    \ 'katex': {},
+    \ 'uml': {},
+    \ 'maid': {},
+    \ 'disable_sync_scroll': 0,
+    \ 'sync_scroll_type': 'middle',
+    \ 'hide_yaml_meta': 1,
+    \ 'sequence_diagrams': {},
+    \ 'flowchart_diagrams': {},
+    \ 'content_editable': v:false,
+    \ 'disable_filename': 1,
+    \ 'toc': {}
+    \ }
