@@ -20,7 +20,7 @@ call vundle#begin()
     Plugin 'tpope/vim-surround'
     Plugin 'johngrib/vim-game-snake'
     Plugin 'iamcco/markdown-preview.nvim'
-    Plugin 'dpelle/vim-LanguageTool'
+    "Plugin 'dpelle/vim-LanguageTool' "Grammar plugin. Requires jar install
     "Plugin 'Ron89/thesaurus_query.vim'
     "Plugin 'tpope/vim-fugitive'
     "Plugin 'vim-gitgutter'
@@ -85,7 +85,7 @@ endif
 
 colorscheme gruvbox
 "Add highlighting for bad spelling:
-au BufRead,BufNewFile *.txt,*.md hi SpellBad ctermfg=red cterm=underline | setlocal spell spelllang=en_us | set dictionary+=/usr/share/dict/words
+au BufRead,BufNewFile * hi SpellBad ctermfg=red cterm=underline | setlocal spell spelllang=en_us
 
 let g:airline#extensions#tabline#enabled = 1
 
