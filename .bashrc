@@ -1,8 +1,8 @@
 # .bashrc
 #Install vundle if it doesn't exist
-if [ ! -d "$HOME/.vim/bundle/Vundle.vim" ]; then
-    git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
-fi
+#if [ ! -d "$HOME/.vim/bundle/Vundle.vim" ]; then
+#    git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+#fi
 
 # Source global definitions
 if [ -f /etc/bashrc ]; then
@@ -23,7 +23,7 @@ alias grep='grep --color=auto'
 alias l.='ls -d .* --color=auto'
 alias ll='ls -l --color=auto'
 alias ls='ls --color=auto'
-alias vi='vim'
+alias vi='vim -u NONE'
 alias xzegrep='xzegrep --color=auto'
 alias xzfgrep='xzfgrep --color=auto'
 alias xzgrep='xzgrep --color=auto'
