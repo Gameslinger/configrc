@@ -20,10 +20,9 @@ autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
 \| endif
 
 "vim-plug stuff end
-"
+
 let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
 " set the runtime path to include vim-plug and initialize
-"Old: set runtimepath+=~/.vim/bundle/Vundle.vim
 call plug#begin()
     Plug 'VundleVim/Vundle.vim'
     Plug 'vim-scripts/TeTrIs.vim'
@@ -41,7 +40,7 @@ call plug#begin()
     Plug 'dense-analysis/ale'
     Plug 'tpope/vim-surround'
     Plug 'johngrib/vim-game-snake'
-    Plug 'iamcco/markdown-preview.nvim'
+    "Plug 'iamcco/markdown-preview.nvim'
     "Plugin 'dpelle/vim-LanguageTool' "Grammar plugin. Requires jar install
     "Plugin 'Ron89/thesaurus_query.vim'
     "Plugin 'tpope/vim-fugitive'
@@ -63,6 +62,10 @@ set scrolloff=5 "Scroll up/ down when cursor is 8 lines away
 set nohlsearch "No highlighting after search
 syntax on
 set bg=dark "Dark mode
+colorscheme gruvbox
+"Add highlighting for bad spelling:
+au BufRead,BufNewFile * hi SpellBad ctermfg=red cterm=underline | setlocal spell spelllang=en_us
+
 
 set relativenumber
 set number
@@ -100,13 +103,10 @@ if (empty($TMUX))
     endif
 endif
 
-colorscheme gruvbox
-"Add highlighting for bad spelling:
-au BufRead,BufNewFile * hi SpellBad ctermfg=red cterm=underline | setlocal spell spelllang=en_us
-
 let g:airline#extensions#tabline#enabled = 1
 
 let NERDTreeShowHidden=1
+map <leader>[ :NERDTreeToggle <CR>
 
 "Add intent indicators for YAML files
 autocmd Filetype yaml setlocal tabstop=2 ai colorcolumn=1,3,5,7,9,80
@@ -125,7 +125,6 @@ setlocal colorcolumn=80
 "Tagbar Config
 "autocmd VimEnter * nested :call tagbar#autoopen(1)
 map <leader>] :TagbarToggle <CR>
-map <leader>[ :NERDTreeToggle <CR>
 let g:tagbar_position='topleft vertical'
 let g:tagbar_width=30
 let g:tagbar_compact=1
@@ -138,24 +137,24 @@ let g:tagbar_autofocus = 1
 
 
 "MarkdownPreview Config
-let g:mkdp_auto_start = 0
-let g:mkdp_auto_close = 0
-"Link to css file to change styling
-let g:mkdp_markdown_css = ''
-let g:mkdp_preview_options = {
-    \ 'mkit': {},
-    \ 'katex': {},
-    \ 'uml': {},
-    \ 'maid': {},
-    \ 'disable_sync_scroll': 0,
-    \ 'sync_scroll_type': 'middle',
-    \ 'hide_yaml_meta': 1,
-    \ 'sequence_diagrams': {},
-    \ 'flowchart_diagrams': {},
-    \ 'content_editable': v:false,
-    \ 'disable_filename': 1,
-    \ 'toc': {}
-    \ }
+"let g:mkdp_auto_start = 0
+"let g:mkdp_auto_close = 0
+""Link to css file to change styling
+"let g:mkdp_markdown_css = ''
+"let g:mkdp_preview_options = {
+"    \ 'mkit': {},
+"    \ 'katex': {},
+"    \ 'uml': {},
+"    \ 'maid': {},
+"    \ 'disable_sync_scroll': 0,
+"    \ 'sync_scroll_type': 'middle',
+"    \ 'hide_yaml_meta': 1,
+"    \ 'sequence_diagrams': {},
+"    \ 'flowchart_diagrams': {},
+"    \ 'content_editable': v:false,
+"    \ 'disable_filename': 1,
+"    \ 'toc': {}
+"    \ }
 
 "Coc Configuration start
 " May need for Vim (not Neovim) since coc.nvim calculates byte offset by count
