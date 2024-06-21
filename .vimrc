@@ -26,7 +26,8 @@ let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
 call plug#begin()
     Plug 'VundleVim/Vundle.vim'
     Plug 'vim-scripts/TeTrIs.vim'
-    Plug 'morhetz/gruvbox'
+    "Plug 'morhetz/gruvbox'
+    Plug 'sliminality/wild-cherry-vim'
     Plug 'Valloric/YouCompleteMe'
     Plug 'neoclide/coc.nvim', {'branch': 'release'}
     Plug 'preservim/nerdtree'
@@ -62,7 +63,7 @@ set scrolloff=5 "Scroll up/ down when cursor is 8 lines away
 set nohlsearch "No highlighting after search
 syntax on
 set bg=dark "Dark mode
-colorscheme gruvbox
+colorscheme wildcherry
 "Add highlighting for bad spelling:
 au BufRead,BufNewFile * hi SpellBad ctermfg=red cterm=underline | setlocal spell spelllang=en_us
 

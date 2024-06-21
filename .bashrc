@@ -6,9 +6,9 @@ if [ -f /etc/bashrc ]; then
 fi
 
 # User specific environment
-if ! [[ "$PATH" =~ "$HOME/.local/bin:$HOME/bin:" ]]
+if ! [[ "$PATH" =~ "$HOME/.local/bin:$HOME/bin:$HOME/.cargo/bin:" ]]
 then
-    PATH="$HOME/.local/bin:$HOME/bin:$PATH"
+    PATH="$HOME/.local/bin:$HOME/bin:$HOME/.cargo/bin:$PATH"
 fi
 export PATH
 
@@ -16,9 +16,6 @@ export PATH
 alias egrep='egrep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias grep='grep --color=auto'
-alias l.='ls -d .* --color=auto'
-alias ll='ls -l --color=auto'
-alias ls='ls --color=auto'
 alias vi='vim -u NONE'
 alias xzegrep='xzegrep --color=auto'
 alias xzfgrep='xzfgrep --color=auto'
@@ -27,6 +24,12 @@ alias zegrep='zegrep --color=auto'
 alias zfgrep='zfgrep --color=auto'
 alias zgrep='zgrep --color=auto'
 alias ip="ip -c"
+alias diff="colordiff"
+alias ls="exa --icons=always --color=always -s type"
+alias cat="bat"
+
+
+alias vim="nvim"
 
 if [ -n "$PS1" ]
 then
